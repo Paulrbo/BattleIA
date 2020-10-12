@@ -1,7 +1,5 @@
 # BattleIA
 
-oui
-
 BattleIA is a project to teach & learn programming.
 
 The Project is based on a game concept : an arena, with bots. 
