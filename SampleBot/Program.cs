@@ -15,6 +15,7 @@ namespace SampleBot
         //private static string serverUrl = "ws://ly0500:51973/ia";
         private static string serverUrl = "ws://127.0.0.1:4626/bot";
         private static string botName = "RandomBOT";
+        private static bool AutoRespawn = true;
 
         static void Main(string[] args)
         {
@@ -128,8 +129,14 @@ namespace SampleBot
                                 break;
                             case "D":
                                 isDead = true;
-                                Console.WriteLine($"We are dead!");
+                                Console.WriteLine($"Ah shit, here we go again !");
                                 await client.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "", CancellationToken.None);
+                                if (AutoRespawn == true) {
+                                    serverUrl = "ws://127.0.0.1:4626/bot";
+                                    botName = "RandomBOT";
+                                    Bot bot = new Bot();
+                                    DoWork().GetAwaiter().GetResult();
+                                }
                                 break;
                         }
                     } // if count > 1
